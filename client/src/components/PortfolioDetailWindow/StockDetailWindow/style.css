@@ -1,0 +1,110 @@
+.StockDetailInfo {
+    
+    margin: 0 5px;
+}
+
+.stockSymbol {
+    padding: 10px;
+    font-size: 1.4rem;
+    /* border-bottom: 1px solid black; */
+    margin-bottom:2px;
+    background-color: white;
+}
+
+.detailRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.detailBox {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    margin: 3px;
+}
+
+.detailTitle {
+    font-weight: 500;
+    font-size: 0.9rem;
+    background-color: white;
+    margin-bottom: 2px;
+    padding: 8px;
+    /* background-color: var(--green-theme-3) */
+}
+
+.detailValue {
+    font-size: 4.5rem;
+    font-weight: 100;
+    background-color: white;
+    margin-bottom: 5px;
+    /* background-color: black; */
+    /* color: white; */
+    /* color: rgba(71, 71, 71, 0.712); */
+    padding: 7px;
+    border-left: 1px solid rgb(230, 228, 228);
+}
+
+.detail {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+    background-color: white;
+    font-size: 0.77rem;
+    padding: 5px;
+    font-weight: 100;
+}
+
+.detailBoxInfo {
+    /* background-color: white; */
+    /* flex-grow: 1; */
+    /* margin-right: 2px; */
+}
+
+.controls {
+    display: flex;
+    height: 100%;
+    background-color: white;
+}
+
+.detailwindow_buySell {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.showDetail_button {
+    border: none;
+    border-radius: 3px;
+    font-size: 1.6rem;
+    background-color: white;
+    /* color: white; */
+    font-weight: 100;
+}
+
+.showCharts {
+    /* background-color: rgb(40, 187, 255); */
+    margin: 5px;
+    padding: 20px 40px;
+    border-right: 1px solid rgba(182, 182, 182, 0.781);
+}
+
+
+.detailWindow__buy {
+    /* background-color: rgb(11, 170, 11); */
+    margin: 5px;
+    padding: 20px;
+    border-bottom: 1px solid rgba(182, 182, 182, 0.781);
+}
+
+
+.detailWindow__sell {
+    /* background-color: red; */
+    margin: 5px;
+    padding: 20px;
+}
+
+

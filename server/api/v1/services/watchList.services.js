@@ -1,0 +1,83 @@
+const User =  require('../models/user.model');
+const WatchList = require('../models/watchList.model');
+const hashPassword =  require('../utils/hashPassword');
+const userService = require('../services/user.services');
+const fetchAllWatchList = require('../utils/fetchAllWatchList');
+const verifyRefreshToken2 = require('../utils/verifyRefreshToken2');
+const addSymblToWatchlist = require("../utils/addSymblToWatchlist");
+const removeSymbolFromWatchlist = require('../utils/removeSymbolFromWatchList');
+// const watchListService = require("../services/watchList.services");
+
+
+
+const getAllWatchList = (request, response) => {
+
+    const token = request.body.token;
+    // console.log(request.body);
+    const decoded = verifyRefreshToken2(token);
+    // console.log("hello watchList");
+    // console.log(decoded);
+    if(decoded.hasOwnProperty("email")) {
+        // console.log("fetchhh : ",decoded.email);
+        User.findOne({email : decoded.email},(err,doc) => {
+            if(!err) {
+                fetchAllWatchList(doc,response);
+            } else {
+                console.log("failed");
+                return response.status(400);
+            }
+        })
+
+            
+    }else {
+        return response.status(400);
+    }
+    
+}
+
+const addSymbl = (request, response) => {
+    const index = request.body.index;
+    const token = request.body.token;
+    const symbol = request.body.symbol;
+    const decoded = verifyRefreshToken2(token);
+
+    if(decoded.hasOwnProperty("email")) {
+        User.findOne({email : decoded.email},(err,doc) => {
+        
+            if(!err) {
+                addSymblToWatchlist(doc,index,symbol, response);
+            } else {
+
+            }
+
+        });
+    }
+}
+
+const removeSymbl = (request, response) => {
+    const index = request.body.index;
+    const token = request.body.token;
+    const symbol = request.body.symbol;
+
+    const decoded = verifyRefreshToken2(token);
+
+    if(decoded.hasOwnProperty("email")) {
+        User.findOne({email : decoded.email},(err,doc) => {
+            if(!err) {
+                return response.status(400).json({
+                    message: "logout"
+                })
+            } else {
+                removeSymbolFromWatchlist(doc,index,symbol,response);
+            }
+        })
+    }
+};
+
+// removeSymbolFromWatchlist(doc,index,symbol,response);
+
+module.exports = {
+    getAllWatchList,
+    addSymbl,
+    removeSymbl,
+}

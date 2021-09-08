@@ -1,0 +1,38 @@
+.Charts_watchlist {
+    padding-top: 1rem;
+    /* border: 1px solid black !important; */
+}
+
+.Charts {
+    /* border: 1px solid black !important; */
+}
+
+.chartY-axis {
+    border: 1px solid black !important;
+    background-color: red !important;
+}
+
+.react-stockcharts-y-axis {
+    z-index: 3;
+    border-left: 1px solid black !important;
+}
+
+.react-stockcharts-crosshair-cursor {
+    border: 1px solid black !important;
+}
+
+.SelectTime {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.selectTime-button {
+    border: 1px solid rgba(182, 181, 181, 0.61);
+    padding: 4px;
+    margin: 3px;
+    width: 40px;
+    height: 40px;
+    border-radius:4px;
+    background-color: white;
+    cursor: pointer;
+}

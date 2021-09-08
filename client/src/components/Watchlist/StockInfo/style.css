@@ -1,0 +1,46 @@
+.watchListStockInfo {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    flex-grow: 1;
+    /* min-height: 400px; */
+    background-color: white;
+    padding-top: 40px;
+    padding-bottom: 40px
+}
+
+
+.info_Attribute{
+    display: flex;
+    min-width: 200px;
+    flex-direction: column;
+    border-right: 1px solid rgb(197, 197, 197);
+    font-size: 1.5rem;
+    font-weight: 100;
+}
+
+.attribute_block {
+    padding: 10px 10px;
+    /* padding-bottom: 4px; */
+}
+
+
+.bottomBorder {
+    border-bottom: 1px solid rgb(197, 197, 197);
+}
+
+
+.info_value{
+    display: flex;
+    min-width: 200px;
+    font-size: 1.5rem;
+    flex-direction: column;
+}
+
+.value_block {
+    padding: 10px 10px;
+    /* padding-bottom: 4px; */
+    text-align: right;
+    font-weight: 100;
+}
+

@@ -1,0 +1,17 @@
+.illustrationPart {
+    position: absolute;
+    top: -40px;
+
+    background-color: black;
+    color: white;
+    padding: 5px 7px;
+    border-radius:5px
+}
+
+/* .illustrationPart:before {
+    position: absolute;
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color:red;
+} */

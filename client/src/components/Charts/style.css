@@ -1,0 +1,35 @@
+.Charts_main {
+    padding-top: 4.2rem;
+    display: felx;
+    flex-direction: row;
+    /* border: 1px solid black !important; */
+    /* background-color: white; */
+}
+
+.Charts {
+    /* border: 1px solid black !important; */
+    background-color: white;
+}
+
+.chartY-axis {
+    border: 1px solid black !important;
+    background-color: red !important;
+}
+
+.react-stockcharts-y-axis {
+    z-index: 3;
+    border-left: 1px solid black !important;
+}
+
+.react-stockcharts-crosshair-cursor {
+    border: 1px solid black !important;
+}
+
+.charts_sidePannel {
+    /* lineColor: rgb(29, 240, 255) */
+}
+
+/* .sidePanelData {
+    display: flex;
+    flex-direction: column;
+} */

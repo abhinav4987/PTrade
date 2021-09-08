@@ -1,0 +1,57 @@
+.registration_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+
+.registration_body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+
+.registration_message {
+    flex: 0.5;
+    background-color: black;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration_form {
+    background-color: black;
+    color: white;
+    flex: 0.5;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+@media only screen and (max-width: 1250px) {
+
+    .registration_body {
+        flex-direction: column;
+        height: auto;
+        width: 100vw;
+    }
+
+    .registration_form {
+        background-color: black;
+        margin-top: 12rem;
+        margin-bottom: 10rem;
+    }
+    .registration_message {
+        margin-top: 12rem;
+    }
+}

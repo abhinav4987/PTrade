@@ -1,0 +1,39 @@
+.charts_sidePannel {
+    display: flex;
+    flex-direction: column;
+    margin: 3px 20px;
+    text-align: center;
+}
+
+.sidePanel_gainerLooser {
+    display: flex;
+    
+}
+
+.sidePannel_topGainer {
+    /* min-width: 340px; */
+    margin: 0 5px;
+    padding: 0 5px;
+    background-color: white;
+}
+
+.sidePannel_topLooser {
+    /* min-width: 340px; */
+    margin: 0 5px;
+    padding: 0 5px;
+    background-color: white;
+    border-radius: 2px;
+}
+
+.panel_colHead {
+    display: block;
+    background-color: white;
+    padding: 7px 32px;
+    font-size: 1.2rem ;
+    border-bottom: 3px solid rgba(230, 229, 229, 0.747);
+}
+
+.sidePannel_searchBox {
+    flex-grow: 1;
+    margin-bottom: 3px;
+}

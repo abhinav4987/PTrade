@@ -1,0 +1,45 @@
+.registrationMessage_main {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.message_welcome {
+    font-size: 5rem;
+    font-weight: 700;
+}
+
+.message_Stocks {
+    font-size: 8rem;
+    font-weight: 900;
+}
+
+.message_info {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+@media only screen and (max-width: 1250px) {
+
+    .message_welcome {
+        font-size: 6rem;
+        font-weight: 700;
+    }
+    
+    .message_Stocks {
+        font-size: 8rem;
+        font-weight: 900;
+    }
+    
+    .message_info {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+    .registrationMessage_main {
+        justify-content: center;
+        
+        
+    } 
+}

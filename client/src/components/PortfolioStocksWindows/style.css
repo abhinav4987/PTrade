@@ -1,0 +1,22 @@
+.portfolioStocksWindows  {
+    display: flex;
+    flex-direction: column;
+    flex: 0.4;
+}
+
+.portfolioStocks_header {
+    text-align: left;
+    font-size: 1.5rem;
+    padding: 5px 5px;
+    z-index: 4;
+    background-color: white;
+    /* width: 100%; */
+    margin-bottom: 3px;
+}
+
+.divFill {
+    flex-grow: 1;
+    background-color:white;
+    color: white;
+    margin-bottom: 3px;
+}

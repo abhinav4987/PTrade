@@ -1,0 +1,38 @@
+.watchList_searchWindow {
+    padding: 0.5rem;
+    background-color: rgb(255, 255, 255);
+    margin:2px 0;
+    width: 400px;
+    z-index: 3;
+}
+
+.searchIcon {
+    font-size: 1.4rem;
+}
+
+.searchwindow_input {
+    display: flex;
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+}
+
+.sc-bxivhb {
+    /* z-index: 10000 !important; */
+}
+
+.sc-ifAKCX {
+    width: 382px !important;
+}
+
+.watchList_searchWindow input{
+    flex-grow: 1  ;
+    font-size: 0.9rem;
+    background-color: inherit;
+    border: none;
+}
+
+
+
+
+

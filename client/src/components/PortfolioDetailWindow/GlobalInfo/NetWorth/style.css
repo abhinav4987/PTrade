@@ -1,0 +1,35 @@
+.infoSlab_main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+    /* background-color: white; */
+    padding: 2px 3px;
+    margin: 2px 2px;
+    margin-top: 0;;
+    margin-right: 3px;
+    border-radius: 5px;
+    flex-grow: 1;
+}
+
+.infoSlab_title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    background-color:white;
+}
+
+.infoIcon{
+    color: black;
+}
+
+
+.infoSlab_networth_value {
+    background-color: white;
+    font-size: 3rem;
+    font-weight: 100;
+    padding: 5px 5px;
+    color: cadetblue;
+    margin-bottom: 10px;
+}
+

@@ -1,0 +1,1 @@
+This file contains a sample template to be used with the [iOS](https://github.com/ChartIQ/ChartIQ-iOS-SDK) and [Android](https://github.com/ChartIQ/ChartIQ-Android-SDK) projects. For information on installation and usage, see the [Getting Started on Mobile](https://documentation.chartiq.com/tutorial-Getting%20Started%20on%20Mobile.html) tutorial.

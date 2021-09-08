@@ -1,0 +1,45 @@
+.watchList_bottomSelect {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(243, 239, 239)
+}
+
+.indexOption {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    margin: 1px;
+    border: none;
+    
+}
+
+.indexOption:hover {
+    color: orange;
+}
+
+.selectedOption {
+    color: var(--green-theme-2);
+}
+
+.selectedOption:hover {
+    color: var(--green-theme-2);
+}
+.indexFill {
+    flex-grow: 1;
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+    color: transparent;
+    padding: 8px 10px;
+}
+
+
+
+/* http://localhost:3000/?action=login&type=login&status=success&request_token=fI8yzDB3FlufNPeP07vtoiU70RakLpBo */

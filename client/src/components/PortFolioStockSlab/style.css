@@ -1,0 +1,77 @@
+.portfolioStockSlab_main {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: 400px;
+}
+
+.portfolioStockSlab_layer1 {
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 15px 10px;
+    margin-bottom: 1px;
+    background-color: white;
+    color: rgba(138, 139, 139, 0.877);
+    font-size: 14px;
+    z-index: 1;
+}
+
+.fillSpace {
+    flex-grow: 1;
+}
+
+.percentage_change {
+    margin: 0 0.2rem;
+}
+
+.portfolioStockSlab_price {
+    margin-left: 1rem;
+}
+
+.redStock {
+    color: red;
+}
+
+.greenStock {
+    color: var(--green-theme-2);
+}
+
+.portfolioStockSlab_layer2 {
+    flex-grow: 1;
+    transition: all 0.5s ease-in;
+    display: none; 
+    
+}
+.portfolioStockSlab_layer1:hover ~ .portfolioStockSlab_layer2 {
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 5px 10px;
+    background-color:rgba(255, 255, 255, 0.637);
+    
+}
+
+.portfolioStockSlab_layer2:hover {
+    
+    flex-grow: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 2;
+    background-color:rgba(255, 255, 255, 0.5);
+    /* margin: 2px; */
+    padding: 5px 10px;
+}

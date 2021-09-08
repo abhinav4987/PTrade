@@ -1,0 +1,12 @@
+.StockSlabsDisplay {
+    display: flex;
+    flex-direction: column;
+    flex: 0.4;
+    flex-grow: 1;
+}
+
+.divFill {
+    flex-grow: 1;
+    background-color:white;
+    color: white;
+}

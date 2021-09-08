@@ -1,0 +1,42 @@
+.watchList_main {
+    position: relative;
+    padding-top: 67px;
+    display: flex;
+    flex-direction: row;
+    
+    /* height: 100vh */
+}
+
+
+
+.watchList_selectedStock {
+    flex-grow: 1;
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    margin-left: 402px;
+    margin-bottom: 3px;
+    height: 100vh;
+    width: calc(100% - 402px);
+    background-color: rgb(243, 239, 239);
+}
+    
+
+.watchList_chart {
+    margin-bottom: 2px;
+    background-color:white;
+}
+
+.watchList_stockInfoHead {
+    padding: 10px;
+    background-color:white;
+    margin-bottom: 2px;
+    font-size: 1.5rem;;
+    font-weight: 100;
+}
+
+.watchList_fill{
+    color: white;
+    background-color: white;
+    flex-grow: 1;
+}

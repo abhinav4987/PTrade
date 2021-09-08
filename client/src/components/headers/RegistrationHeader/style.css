@@ -1,0 +1,16 @@
+.registration_header_main {
+    color: white;
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+
+    display: flex;
+    align-items: flex-start;
+}
+
+.brandName {
+    margin: 0.2rem 0.8rem;
+    font-weight: 500;
+}

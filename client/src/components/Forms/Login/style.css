@@ -1,0 +1,77 @@
+.login_form_main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+form{
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.login_form_form {
+    margin-top: 2.5rem;
+}
+
+
+.button_deck {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 500px;
+    padding-right: 0;
+    margin-top: 3.5rem;
+}
+
+
+.login_button:hover{
+    background-color: rgb(9, 207, 9);
+    color: white;
+}
+
+
+
+.signup_button:hover {
+    background-color: rgb(25, 137, 241);
+    color: white;
+}
+
+
+.registration_button {
+    min-width: 350px;
+    font-size: 1.2rem;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.1rem;
+    background-color: rgb(122, 122, 122);
+    color: rgb(0, 0, 0);
+    margin: 0.4rem 0.6rem;
+    transition: all 0.2s ease-in;
+}
+
+
+
+@media only screen and (max-width: 1250px) {
+
+    .login_form_main {
+        align-items: center;
+        
+    }
+
+    form {
+        align-items: center;
+    }
+
+    .button_deck {
+        align-items: center;
+    }
+
+    .error_notice {
+        width:200px;
+        margin: 1rem auto;
+    }
+}
