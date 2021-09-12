@@ -4,7 +4,7 @@ const User = require("../models/user.model");
 module.exports = (user, token, response)  => 
     
     
-    jwt.verify(token, process.env.REFRESH_TOKEN_KEY, function(err, decoded) {
+    jwt.verify(token, "KJJnafgss76VYvwdVUOYVWOVFQUovwfo67v38fQ", function(err, decoded) {
         if (err) {
 
             User.update({email: user.email}, 
@@ -26,4 +26,5 @@ module.exports = (user, token, response)  =>
             return decoded;
         }
     });
+
 

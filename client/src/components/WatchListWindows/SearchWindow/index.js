@@ -5,14 +5,14 @@ import { StockSymbolData } from './symbl';
 import './style.css';
 
 
-function SearchWindow({changeSymbol}) {
+function SearchWindow({changeSymbl}) {
     
     const handleOnSearch = () => {
 
     }
 
     const handleOnSelect = (item) => {
-        // changeSymbol(item)
+        changeSymbl(item)
     }
 
     return (

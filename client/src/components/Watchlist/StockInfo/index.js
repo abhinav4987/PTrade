@@ -9,7 +9,7 @@ const dummyData = {
     faceValue : "10"
 }; 
 
-function StockInfo({data}) {
+function StockInfo({data,index}) {
     console.log("stock data ", data);
     
     

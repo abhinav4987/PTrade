@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 const User = require("../models/user.model");
 
 module.exports = (request) => 
-    jwt.verify(request.body.token, prrocess.env.REFRESH_TOKEN_KEY, function(err, decoded) {
+    jwt.verify(request.body.token, "efhJHHvjVJHVJ456ecu76SD65cTY", function(err, decoded) {
         if(err) {
             return {
                 isValid: false,

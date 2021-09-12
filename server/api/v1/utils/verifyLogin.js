@@ -5,6 +5,7 @@ const newAccessToken = require('../utils/newAccessToken');
 const newRefreshToken = require('../utils/newRefreshToken')
 
 
+
 module.exports = async function verifyLogin(response,user, data) {
     
     const match = await bcrypt.compare(data.password, user[0].password);
@@ -16,7 +17,6 @@ module.exports = async function verifyLogin(response,user, data) {
             {email : user[0].email},
             { $push : { refreshTokens: [refreshToken]}},
             function(error, result) {
-                console.log()
                 if(error) {
                     return response.status(500);
                 } else {

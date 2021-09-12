@@ -17,7 +17,7 @@ export const getAllWatchList = async () =>
 export const addSymbl = async (symbl, index) => 
     await apiV1Request.post("/watchList/addSymbl", {
         token : getRefreshToken(),
-        symbl : symbl,
+        symbol : symbl,
         index: index
     }).then((response) => {
         console.log("Symbol Added");
@@ -25,13 +25,15 @@ export const addSymbl = async (symbl, index) =>
         console.log();
     });
 
+
 export const removeSymbl = async (symbl, index) => 
     await apiV1Request.post("/watchList/removeSymbl", {
         token: getRefreshToken(),
-        symbl: symbl,
+        symbol: symbl,
         index: index
     }).then((response) => {
         console.log("symbol removed");
     }).catch((error) => {
         console.log();
     })
+

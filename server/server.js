@@ -18,7 +18,9 @@ server.use(express.json({type: 'application/*+json'}))
 
 
 // database
-mongoose.connect(process.env.mongoURL, {
+
+const uri = process.env.mongoURL || 'mongodb://localhost:27017/paperTrading'
+mongoose.connect('mongodb://localhost:27017/paperTrading', {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
 	useCreateIndex: true,

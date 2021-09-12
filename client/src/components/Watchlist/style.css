@@ -13,6 +13,7 @@
     flex-grow: 1;
     display: flex;
     position: absolute;
+    
     flex-direction: column;
     margin-left: 402px;
     margin-bottom: 3px;
@@ -21,6 +22,10 @@
     background-color: rgb(243, 239, 239);
 }
     
+.watchList_stockInfoHead_button {
+    display: flex;
+
+}
 
 .watchList_chart {
     margin-bottom: 2px;
@@ -29,6 +34,8 @@
 
 .watchList_stockInfoHead {
     padding: 10px;
+    display: flex;
+    justify-content: space-between;
     background-color:white;
     margin-bottom: 2px;
     font-size: 1.5rem;;

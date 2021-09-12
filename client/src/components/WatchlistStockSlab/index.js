@@ -14,7 +14,7 @@ import './style.css';
 
 // RELIANCE ICICIBANK
 
-function StockSlab({data, changeSymbl}) {
+function StockSlab({data, changeSymbl,index,refetchWatchList}) {
     
     // console.log("watchListStock ",changeSymbl);
     let [currentPriceClassName, setOne] = useState("stockSlab_price redStock");
@@ -54,6 +54,12 @@ function StockSlab({data, changeSymbl}) {
     const onClick = () => {
         changeSymbl(data);
     };
+
+    const remove = () => {
+        console.log("arey hata raha huun yaar");
+        removeSymbl(data,index);
+        refetchWatchList();
+    }
     return (
         <div className="stockSlab_main" onClick={onClick}>
             <div className="stockSlab_layer1" id="">
@@ -74,7 +80,7 @@ function StockSlab({data, changeSymbl}) {
                 <div className="fillSpace"></div>
                 <Buy illustration="Buy"/>
                 <Sell illustration="Sell"/>
-                <Remove illustration="Remove"/>
+                <div onClick={remove}><Remove illustration="Remove" remove={remove} /></div>
             </div>
         </div>
     )

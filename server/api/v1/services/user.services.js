@@ -29,6 +29,7 @@ const registerUser = (request, response) => {
 const loginUser = (request, response) => {
 
     User.find(({email: request.body.email}), (error, user) => {
+        console.log("users Found : ", user);
         if(user.length === 0) {
             return response.status(400).json({
                 message: "User with given email is not registered."

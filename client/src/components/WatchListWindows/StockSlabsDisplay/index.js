@@ -2,7 +2,7 @@ import React from 'react'
 import StockSlab from '../../WatchlistStockSlab'
 import './style.css'
 
-function StockSlabsDisplay({changeSymbl,data}) {
+function StockSlabsDisplay({changeSymbl,data,index,refetchWatchList}) {
     
     return (
         <div className="StockSlabsDisplay">
@@ -10,7 +10,7 @@ function StockSlabsDisplay({changeSymbl,data}) {
                 {
                     data?
                         data.map((stocksData) => (
-                            <StockSlab changeSymbl={changeSymbl} data={stocksData}/>
+                            <StockSlab refetchWatchList={refetchWatchList} changeSymbl={changeSymbl} data={stocksData} index={index}/>
                         )) : null
                 }
             </div>

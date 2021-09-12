@@ -6,7 +6,7 @@ module.exports =  function newRefreshToken(user) {
         
         const refreshToken = jwt.sign({
             email : user.email
-        },process.env.REFRESH_TOKEN_KEY,{ expiresIn: '7 days' },{ algorithm: 'RS256'});
+        },"KJJnafgss76VYvwdVUOYVWOVFQUovwfo67v38fQ",{ expiresIn: '7d' },{ algorithm: 'RS256'});
 
 
         return refreshToken;

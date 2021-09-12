@@ -5,7 +5,12 @@ import StockInfo from './StockInfo'
 import { getAllWatchList} from '../../routes/watchList.routes'
 import {getFundamentals} from '../../routes/yFinance.routes'
 import './style.css'
-
+import  Buy from '../Buttons/Buy'
+import Sell from '../Buttons/Sell'
+import Remove from '../Buttons/Remove'
+import Add from '../Buttons/Add'
+import {includedSymbol} from '../../utils/includedSymbol';
+import {removeSymbl, addSymbl} from '../../routes/watchList.routes'
 let DataArray = [
     [
         
@@ -129,6 +134,7 @@ function WatchList() {
     const [watchListData, setWatchListData] = useState(DataArray);
     const [watchListArray, setWatchListArray] = useState(watchListData[0]);
     const [stockInfo, setStockInfo] = useState(null);
+    const [included, setIncluded] = useState(true);
     const [symbl,setSymbl] = useState("HDFCBANK");
     useEffect(() => {
         getAllWatchList().then((data) => {
@@ -152,6 +158,8 @@ function WatchList() {
         getFundamentals(symbl).then((data) => {
             
             setStockInfo(data);
+            console.log("included ",includedSymbol(watchListData,symbl));
+            setIncluded(includedSymbol(watchListData,symbl));
         })
     },[symbl]);
     
@@ -163,21 +171,49 @@ function WatchList() {
         setIndex(value);
     };
     const changeChosenSymbl = (value) => {
+        console.log("changed", value);
+        setSymbl(value.SYMBL);
+    };
+    const changeChosenSymbl2 = (value) => {
+        console.log("changed", value);
         setSymbl(value);
     };
+    const refetchWatchList = () => {
+        getAllWatchList().then((data) => {
+            console.log("yaha bhai yaha ", data);
+            setWatchListData(data);
+        })
+    };
+
+    const remove = () => {
+        removeSymbl(symbl,index);
+        refetchWatchList();
+    }
+
+    const add = () => {
+        addSymbl(symbl,index);
+        refetchWatchList();
+    }
     console.log("hello 2");
     return (
         <div className="watchList_main">
-            <WatchListWindow data={watchListArray} changeIndex={changeIndex}  changeChosenSymbl={changeChosenSymbl}/>
+            <WatchListWindow data={watchListArray} changeIndex={changeIndex}  changeChosenSymbl={changeChosenSymbl} changeChosenSymbl2={changeChosenSymbl2} index={index} refetchWatchList={refetchWatchList}/>
             <div className="watchList_selectedStock">
                 <div className="watchList_chart">
                     <Charts symbl={symbl} />
                 </div>
                 <div className="watchList_stockInfoHead">
                     {symbl}
-                    <div></div>
+                    <div className="watchList_stockInfoHead_button"> 
+                        <Buy illustration="Buy" />
+                        <Sell illustration="Sell" />
+                        {
+                            included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
+                        }
+
+                    </div>
                 </div>
-                <StockInfo symbl={symbl} data={stockInfo}/>
+                <StockInfo symbl={symbl} data={stockInfo} index={index}/>
                 <div className="watchList_fill">.fegg</div>
             </div>
         </div>

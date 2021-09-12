@@ -47,12 +47,15 @@ const addSymbl = (request, response) => {
             if(!err) {
                 addSymblToWatchlist(doc,index,symbol, response);
             } else {
-
+                return response.status(400).json({
+                    message: "logout"
+                });
             }
 
         });
     }
 }
+
 
 const removeSymbl = (request, response) => {
     const index = request.body.index;
@@ -60,13 +63,16 @@ const removeSymbl = (request, response) => {
     const symbol = request.body.symbol;
 
     const decoded = verifyRefreshToken2(token);
-
+    // console.log("yeh hain decoded",decoded)
     if(decoded.hasOwnProperty("email")) {
         User.findOne({email : decoded.email},(err,doc) => {
-            if(!err) {
+            if(err) {
+                console.log("doc yeh tha",doc);
+                console.log(err);
+               
                 return response.status(400).json({
                     message: "logout"
-                })
+                });
             } else {
                 removeSymbolFromWatchlist(doc,index,symbol,response);
             }
