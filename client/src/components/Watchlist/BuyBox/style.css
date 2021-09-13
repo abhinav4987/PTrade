@@ -1,0 +1,92 @@
+.buyBox_main {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 100px;
+    background-color:transparent;
+    /* box-shadow: -1px -1px 5px 1px rgba(0,0,0,0.75); */
+    /* width: 400px; */
+
+}
+
+.buyBox_head {
+    background-color: rgb(51, 144, 197);
+    padding: 0.8rem;
+    border-top-left-radius:4px;
+    border-top-right-radius: 4px;
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.exchangeName {
+    margin-right: 5px;
+    margin-left: px;
+    font-size: 0.6rem;
+}
+
+.HEAD_SYMBOL {
+    margin-right: px;
+    margin-left: 3px;
+    font-weight: 600;
+}
+
+.textField_floor1 {
+    margin: 0.2rem;
+}
+
+.textField_floor2 {
+    /* margin: ; */
+    padding:0.4rem 0.6rem ;
+    /* border-bottom: 1.5px solid rgb(226, 226, 226); */
+}
+
+.buyBox_body {
+    background-color: rgb(247, 247, 247);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.buyBox_body_top {
+    display: flex;
+    padding: 1rem 0.3rem;
+}
+
+.buyBox_body_bottom {
+    margin-bottom: 0.6rem;
+}
+
+.buyBox_buttons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.6rem;
+    background-color: rgb(51, 144, 197);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.buyBox_Buy {
+    border: none;
+    padding: 0.6rem 0.8rem;
+    margin-right: 0.3rem;
+    border-radius: 4px;
+    background-color: rgb(59, 204, 59);
+    color: white;
+}
+
+button {
+    cursor: pointer;
+}
+
+.buyBox_Cancel {
+    border: none;
+    padding: 0.6rem 0.8rem;
+    margin-right: 0.3rem;
+    border-radius: 4px;
+    background-color: #fff;
+
+}
+
+.closed {
+    display: none;
+}

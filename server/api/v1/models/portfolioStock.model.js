@@ -3,25 +3,33 @@ var Schema   = mongoose.Schema;
 
 var portfolioStockSchema = new Schema({
     ownedBy : {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+    },
+    portfolioId : {
+        type: String,
+    },
+    symbl:{
+        type: String
     },
     quantity : {
         type: Number,
         min: 0
     },
-    netWorth: {
-        type: Number,
-    },
-    averageCostPrice: {
-        type: Number
-    },
-    valueMarketPrice: {
-        type: Number
-    },
-    unrealisedProfit: {
-        type: Number,
-    },
+    totalInvestment : {
+        type: String
+    }
+    // netWorth: {
+    //     type: Number,
+    // },
+    // averageCostPrice: {
+    //     type: Number
+    // },
+    // valueMarketPrice: {
+    //     type: Number
+    // },
+    // unrealisedProfit: {
+    //     type: Number,
+    // },
 })
 
 

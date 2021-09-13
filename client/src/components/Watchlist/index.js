@@ -2,6 +2,8 @@ import React,{useState,useEffect} from 'react'
 import WatchListWindow from '../WatchListWindows'
 import Charts from './Charts'
 import StockInfo from './StockInfo'
+import BuyBox from './BuyBox'
+import SellBox from './SellBox';
 import { getAllWatchList} from '../../routes/watchList.routes'
 import {getFundamentals} from '../../routes/yFinance.routes'
 import './style.css'
@@ -126,7 +128,7 @@ let DataArray = [
     
 ];
 
-// RELIANCE ICICIBANK
+
 
 function WatchList() {
     
@@ -199,13 +201,15 @@ function WatchList() {
         <div className="watchList_main">
             <WatchListWindow data={watchListArray} changeIndex={changeIndex}  changeChosenSymbl={changeChosenSymbl} changeChosenSymbl2={changeChosenSymbl2} index={index} refetchWatchList={refetchWatchList}/>
             <div className="watchList_selectedStock">
+                <SellBox open={true} price={234} symbl={symbl}/>
+                <BuyBox open={true} price={1000} symbl={symbl}/>
                 <div className="watchList_chart">
                     <Charts symbl={symbl} />
                 </div>
                 <div className="watchList_stockInfoHead">
                     {symbl}
                     <div className="watchList_stockInfoHead_button"> 
-                        <Buy illustration="Buy" />
+                        <Buy illustration="Buy"  />
                         <Sell illustration="Sell" />
                         {
                             included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
