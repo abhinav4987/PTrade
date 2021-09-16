@@ -5,8 +5,7 @@ var Schema   = mongoose.Schema;
 
 var portfolioSchema = new Schema({
     ownedBy : {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
     },
     netWorth: {
         type: Number,
@@ -24,3 +23,4 @@ var portfolioSchema = new Schema({
 
 
 module.exports = mongoose.model('PortFolio', portfolioSchema);
+
