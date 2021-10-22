@@ -6,6 +6,7 @@
     background-color:transparent;
     /* box-shadow: -1px -1px 5px 1px rgba(0,0,0,0.75); */
     /* width: 400px; */
+    z-index: 1000;
 
 }
 
@@ -90,3 +91,5 @@ button {
 .closed {
     display: none;
 }
+
+

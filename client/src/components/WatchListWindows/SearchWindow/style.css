@@ -32,6 +32,23 @@
     border: none;
 }
 
+@media only screen and (max-width: 920px) {
+    .watchList_searchWindow {
+        
+        width: inherit;
+        
+    }
+    .searchwindow_input {
+        display: flex;
+        width: 98%;
+        align-items: center;
+        justify-content: center;
+    }
+    .searchwindow_input .kYphPf {
+        width: 100% !important;
+    }
+}
+
 
 
 

@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import PortfolioStocksWindows from '../PortfolioStocksWindows'
 import PortfolioDetailWindow from './../PortfolioDetailWindow/index';
+import MobilePortfolio from '../MobilePortfolio'
 import './style.css';
 
 
@@ -73,11 +74,17 @@ function Portfolio() {
 
     return (
         <div className="portfolio_main">
-            
-            <PortfolioStocksWindows data={ownedStock} />
-            <PortfolioDetailWindow />
+            <div className="desktop-portfolio">
+                <PortfolioStocksWindows data={ownedStock} />
+                <PortfolioDetailWindow />
+            </div>
+            <div className="mobile-portfolio">
+                <MobilePortfolio /> 
+            </div>
         </div>
     )
 }
 
 export default Portfolio
+
+

@@ -3,6 +3,7 @@ require('dotenv').config();
 var express = require('express');
 var mongoose = require('mongoose')
 var bodyParser = require('body-parser')
+var cors = require('cors')
 var server = express();
 const port = process.env.PORT || 5000;
 const routerV1init = require('./api/v1/routes')
@@ -15,7 +16,7 @@ server.use(bodyParser.urlencoded({
 server.use(bodyParser.json());
 server.use(express.urlencoded({ extended: true }))
 server.use(express.json({type: 'application/*+json'}))
-
+server.use(cors())
 
 // database
 

@@ -6,3 +6,28 @@
     
     /* height: 100vh; */
 }
+
+.desktop-portfolio {
+    display: flex;
+    width: 100%;
+}
+
+
+.mobile-portfolio {
+    width: 100%;
+    display: none;
+}
+
+.mobilePortfolio {
+
+}
+
+@media only screen and (max-width: 900px) {
+    .mobile-portfolio {
+        display: flex;
+        flex-direction: column;
+    }
+    .desktop-portfolio {
+        display: none;
+    }
+}

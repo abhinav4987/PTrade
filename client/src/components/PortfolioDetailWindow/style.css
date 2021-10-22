@@ -2,11 +2,22 @@
     flex-grow: 1;
 }
 
+.felx-fill {
+    flex-grow: 1;
+}
+
 .portfolio_welcomeNote {
+    display: flex;
+    align-items: flex-end;
     background-color: white;
     padding: 5px 5px;
     margin:  0px 7px;
     margin-top: 5px;
     margin-bottom: 0;
     font-size: 1.5rem;
+}
+
+.portfolio-funds {
+    font-size: 1.3rem;
+    font-weight: 100;
 }

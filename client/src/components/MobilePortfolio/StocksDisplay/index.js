@@ -1,13 +1,8 @@
 import React from 'react'
-import PortfolioStockSlab from '../PortFolioStockSlab';
+import PortfolioStockSlab from '../../PortFolioStockSlab';
 import './style.css'
 
-
-
-
-
-
-function PortfolioStocksWindows({data}) {
+function StocksDisplay({data}) {
     
     console.log(data);
     const stockList = data.map((stock) => (
@@ -16,7 +11,7 @@ function PortfolioStocksWindows({data}) {
     return (
         <div className="portfolioStocksWindows">
             <div className="portfolioStocks_header">YOUR STOCKS</div>
-            <div className="portfolioStocks_stockList">
+            <div className="portfolioStocks_stockList-mobile">
                 {stockList}
             </div>
             <div className="divFill">.</div>
@@ -25,4 +20,4 @@ function PortfolioStocksWindows({data}) {
 }
 
 
-export default PortfolioStocksWindows
+export default StocksDisplay

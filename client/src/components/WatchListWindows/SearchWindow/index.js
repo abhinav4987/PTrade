@@ -25,7 +25,7 @@ function SearchWindow({changeSymbl}) {
                 }}
                 styling={{
                     flexGrow: 1,
-                    width: "400px !important",
+                    width: "100% !important",
                     borderRadius: "2px",
                     color: "black",
                     height: "44px",

@@ -6,7 +6,7 @@ import { useForm } from './../../../hooks/useForms';
 import { loginRoute } from '../../../routes/login.route'
 import { SetAccessToken } from './../../../utils/setAccessToken';
 import { SetRefreshToken } from './../../../utils/setRefreshToken';
-
+import { getFunds} from "../../../routes/portfolio.routes";
 
 const validations = {
 
@@ -57,11 +57,13 @@ function Login({changeForm}) {
         changeForm();
     }
 
+
     const loginCall = () => {
         if(Object.keys(errors).length === 0) {
             loginRoute(data).then((result) => {
                 console.log(result);
                 if(result){
+                    getFunds();
                     console.log("success result : ", result);
                     SetAccessToken(result.access);
                     SetRefreshToken(result.refresh);

@@ -130,6 +130,7 @@ let DataArray = [
 
 
 
+
 function WatchList() {
     
     const [index, setIndex] = useState(0);
@@ -137,6 +138,8 @@ function WatchList() {
     const [watchListArray, setWatchListArray] = useState(watchListData[0]);
     const [stockInfo, setStockInfo] = useState(null);
     const [included, setIncluded] = useState(true);
+    const [buyBoxOpen, setBuyBoxOpen] = useState(false);
+    const [sellBoxOpen, setSellBoxOpen] = useState(false);
     const [symbl,setSymbl] = useState("HDFCBANK");
     useEffect(() => {
         getAllWatchList().then((data) => {
@@ -154,7 +157,17 @@ function WatchList() {
             setStockInfo(data);
         })
     },[]);
+    useEffect(() => {
+        if(buyBoxOpen === true){
+            setSellBoxOpen(false);
+        }
+    },[buyBoxOpen]);
 
+    useEffect(() => {
+        if(sellBoxOpen === true) {
+            setBuyBoxOpen(false);
+        }
+    },[sellBoxOpen]);
     useEffect(() => {
         // console.log(symbl)
         getFundamentals(symbl).then((data) => {
@@ -199,18 +212,27 @@ function WatchList() {
     console.log("hello 2");
     return (
         <div className="watchList_main">
-            <WatchListWindow data={watchListArray} changeIndex={changeIndex}  changeChosenSymbl={changeChosenSymbl} changeChosenSymbl2={changeChosenSymbl2} index={index} refetchWatchList={refetchWatchList}/>
+            <WatchListWindow 
+                data={watchListArray} 
+                changeIndex={changeIndex}  
+                changeChosenSymbl={changeChosenSymbl} 
+                changeChosenSymbl2={changeChosenSymbl2} 
+                index={index} 
+                refetchWatchList={refetchWatchList}
+                buyOpen={setBuyBoxOpen}
+                sellOpen={setSellBoxOpen}
+        />
             <div className="watchList_selectedStock">
-                <SellBox open={true} price={234} symbl={symbl}/>
-                <BuyBox open={true} price={1000} symbl={symbl}/>
+                <SellBox open={sellBoxOpen} closeFun={setSellBoxOpen} price={234} symbl={symbl} />
+                <BuyBox open={buyBoxOpen} closeFun={setBuyBoxOpen} price={1000} symbl={symbl}/>
                 <div className="watchList_chart">
                     <Charts symbl={symbl} />
                 </div>
                 <div className="watchList_stockInfoHead">
                     {symbl}
                     <div className="watchList_stockInfoHead_button"> 
-                        <Buy illustration="Buy"  />
-                        <Sell illustration="Sell" />
+                        <Buy illustration="Buy" open={setBuyBoxOpen}  />
+                        <Sell illustration="Sell" open={setSellBoxOpen} />
                         {
                             included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
                         }

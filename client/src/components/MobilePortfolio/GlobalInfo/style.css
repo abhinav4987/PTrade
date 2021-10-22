@@ -1,0 +1,41 @@
+.globaldata-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color:white;
+    padding: 1rem auto;
+    margin: 1.5px; 
+}
+
+.globalLabel-columns {
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgb(211, 210, 210);
+}
+
+.global-data-box {
+
+    padding: 10px;
+    min-width: 100px;
+}
+
+
+.globalValue-columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.global-labels {
+    text-align: left;
+    border-bottom: 1px solid rgb(211, 210, 210);
+}
+
+.global-value {
+    text-align: right;
+    border-bottom: 1px solid rgb(211, 210, 210);
+}
+
+.no-bottom-border {
+    border-bottom: none;
+}

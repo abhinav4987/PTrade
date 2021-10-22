@@ -1,7 +1,17 @@
 const PortFolio = require("../models/portfolio.model");
 const verifyRefreshToken2 = require('../utils/verifyRefreshToken2');
+const getFund = require("../utils/getFunds");
 const getFunds = (request, response) => {
 
+    const decoded = verifyRefreshToken2(request.body.token);
+
+    if(decoded.hasOwnProperty('email')) {
+        getFund(decoded.email, response)
+    } else {
+        return response.status(400).json({
+            message: "Logout"
+        })
+    }
 };
 
 const getPortFolio = (request, response) => {
@@ -67,3 +77,4 @@ module.exports = {
     getPortFolio,
     updatePortfolio
 }
+

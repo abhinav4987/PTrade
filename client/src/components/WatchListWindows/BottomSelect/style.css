@@ -1,3 +1,5 @@
+
+
 .watchList_bottomSelect {
     position: fixed;
     left: 0;
@@ -43,3 +45,17 @@
 
 
 /* http://localhost:3000/?action=login&type=login&status=success&request_token=fI8yzDB3FlufNPeP07vtoiU70RakLpBo */
+
+@media only screen and (max-width: 600px) {
+    
+    .watchList_bottomSelect {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        background-color: rgba(243, 239, 239)
+    }
+}

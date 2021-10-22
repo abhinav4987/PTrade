@@ -6,11 +6,11 @@ const initializeWatchList = async (userId) => {
     const watchlist1 = WatchList({
         symbols : [
             'INFY',
-            'NIFTY',
-            'BANKNIFTY',
-            'SENSEX',
-            'SPX',
-            'CNXIT'
+            'HDFCBANK',
+            'SBIN',
+            'ICICIBANK',
+            'AXISBANK',
+            'INDUSINDBK'
         ],
         index : 0,
         ownedBy : userId,

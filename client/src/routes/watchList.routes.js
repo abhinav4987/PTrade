@@ -20,7 +20,7 @@ export const addSymbl = async (symbl, index) =>
         symbol : symbl,
         index: index
     }).then((response) => {
-        console.log("Symbol Added");
+        // console.log("Symbol Added");
     }).catch((error) => {
         console.log();
     });
@@ -32,7 +32,7 @@ export const removeSymbl = async (symbl, index) =>
         symbol: symbl,
         index: index
     }).then((response) => {
-        console.log("symbol removed");
+        // console.log("symbol removed");
     }).catch((error) => {
         console.log();
     })

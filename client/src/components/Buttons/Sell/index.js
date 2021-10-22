@@ -2,9 +2,15 @@ import React from 'react'
 import './style.css'
 import '../style.css'
 
-function Sell({illustration}) {
+function Sell({illustration,open}) {
+
+
+    const onClick = () => {
+        open(true);
+    }
+
     return (
-        <div className="SellButton">
+        <div className="SellButton" onClick={onClick}>
             <div className="SellIllustrationPart">
                 {illustration}
             </div>

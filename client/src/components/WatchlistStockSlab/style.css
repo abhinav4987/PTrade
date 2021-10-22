@@ -76,3 +76,12 @@
     /* margin: 2px; */
     padding: 5px 10px;
 }
+
+
+@media only screen and (max-width: 920px) {
+    .stockSlab_main {
+        
+        width: 100%;
+        
+    }
+}

@@ -4,7 +4,7 @@ export const getStockCodes = async (data) => {
     await apiV1Request.get("/nseTool/getStockCodes").then((data) => {
         // console.log(data.data);
     }).catch((error) => {
-        console.log(error);
+        // console.log(error);
     })
 }
 

@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
 import './style.css';
 
-function BuyBox({symbl,open, price}) {
+function SellBox({symbl,open, price, closeFun}) {
     
     const [quantity, setQuantity] = useState(1);
     const [netCost, setNetCost] = useState(price*quantity);
@@ -14,8 +14,13 @@ function BuyBox({symbl,open, price}) {
         setNetCost(price*quantity);
     },[quantity]);
 
+    useEffect(() => {
+        setClassName(open === true ? "buyBox_main" : "buyBox_main closed");
+    },[open]);
+
     const close = () => {
         setClassName("buyBox_main closed");
+        closeFun(false);
     }
     
     return (
@@ -74,7 +79,7 @@ function BuyBox({symbl,open, price}) {
     )
 }
 
-export default BuyBox
+export default SellBox
 
 // net quantity
 // price
