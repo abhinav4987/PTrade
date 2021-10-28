@@ -8,7 +8,16 @@ import './style.css'
 
 
 
-function WatchListWindows({changeIndex,changeChosenSymbl,changeChosenSymbl2, data,index,refetchWatchList}) {
+
+
+function WatchListWindows({changeIndex,
+    changeChosenSymbl,
+    changeChosenSymbl2,
+    data,
+    index,
+    refetchWatchList,
+    buyOpen,
+    sellOpen}) {
     
     console.log("display data " , data);
     const [watchListIndex, setWatchListIndex] = useState(0);
@@ -31,7 +40,14 @@ function WatchListWindows({changeIndex,changeChosenSymbl,changeChosenSymbl2, dat
     return (
         <div className="WatchListWindow">
             <SearchWindow changeSymbl={changeChosenSymbl} />
-            <StockSlabsDisplay changeSymbl={changeSymbl} data={data} index={index} refetchWatchList={refetchWatchList}/>
+            <StockSlabsDisplay 
+                changeSymbl={changeSymbl} 
+                data={data} 
+                index={index} 
+                refetchWatchList={refetchWatchList} 
+                buyOpen={buyOpen} 
+                sellOpen={sellOpen}
+                />
             <BottomSelect  changeIndex={changeIndex}/>
         </div>
     )

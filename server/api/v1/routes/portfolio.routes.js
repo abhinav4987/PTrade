@@ -4,6 +4,7 @@ const service = require("../services/portfolio.services");
 var router = express.Router();
 
 router.post("/getFund",service.getFunds);
-router.post("/update",service.getFunds);
+router.post("/getPortfolio",service.getPortFolio);
+router.post("/update", service.update);
 
 module.exports = router

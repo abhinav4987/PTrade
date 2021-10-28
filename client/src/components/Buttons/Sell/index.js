@@ -7,6 +7,7 @@ function Sell({illustration,open}) {
 
     const onClick = () => {
         open(true);
+        console.log("kholdu?")
     }
 
     return (

@@ -2,7 +2,12 @@
     display: flex;
     flex-direction: column;
     flex: 0.4;
+    width: 400px;
+
+    position: fixed;
+    height: 100vh;
 }
+
 
 .portfolioStocks_header {
     text-align: left;
@@ -19,4 +24,40 @@
     background-color:white;
     color: white;
     margin-bottom: 3px;
+}
+
+.portfolioStocks_stockList {
+    width: 100%;
+}
+
+.nostocksmessage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    height: 100%;
+    padding: 4rem 0rem;;
+    background-color: white;
+    font-size: 1.5rem;
+}
+
+.nostocksmessage > svg {
+    font-size: 2rem;
+}
+
+@media only screen and (max-width: 920px) {
+    
+    .portfolioStocksWindows {
+        position: fixed;
+        height: 100vh;
+        background-color: rgb(243, 239, 239);
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        z-index: 100;
+        /* margin-right: 3px; */
+        /* width: 400px; */
+        /* height: 100vh; */
+    }
 }

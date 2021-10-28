@@ -8,13 +8,20 @@ import { removeSymbl } from './../../routes/watchList.routes';
 import './style.css';
 
 
+
 // import csvTojson from '../../../../server/api/v1/utils/csvTojson';
 
 
 
 // RELIANCE ICICIBANK
 
-function StockSlab({data, changeSymbl,index,refetchWatchList}) {
+function StockSlab({data, 
+    changeSymbl,
+    index,
+    refetchWatchList,
+    buyOpen,
+    sellOpen
+}) {
     
     // console.log("watchListStock ",changeSymbl);
     let [currentPriceClassName, setOne] = useState("stockSlab_price redStock");
@@ -60,6 +67,7 @@ function StockSlab({data, changeSymbl,index,refetchWatchList}) {
         removeSymbl(data,index);
         refetchWatchList();
     }
+    
     return (
         <div className="stockSlab_main" onClick={onClick}>
             <div className="stockSlab_layer1" id="">
@@ -78,8 +86,8 @@ function StockSlab({data, changeSymbl,index,refetchWatchList}) {
 
             <div className="stockSlab_layer2">
                 <div className="fillSpace"></div>
-                <Buy illustration="Buy"/>
-                <Sell illustration="Sell"/>
+                <Buy illustration="Buy" open={buyOpen}/>
+                <Sell illustration="Sell" open={sellOpen}/>
                 <div onClick={remove}><Remove illustration="Remove" remove={remove} /></div>
             </div>
         </div>

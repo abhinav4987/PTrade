@@ -1,18 +1,27 @@
 import React,{useState, useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
+import {getFundamentals} from '../../../routes/yFinance.routes'
+import {sellLimit, sell} from '../../../routes/portfolioStocks.routes'
 import './style.css';
+import { updatePortfolio } from '../../../routes/portfolio.routes';
 
 function SellBox({symbl,open, price, closeFun}) {
     
     const [quantity, setQuantity] = useState(1);
-    const [netCost, setNetCost] = useState(price*quantity);
     const [stockPrice, setStockPrice] = useState(price);
+    const [netCost, setNetCost] = useState(stockPrice*quantity);
+    const [sellLim, setSellLim] = useState(0);
     const [className, setClassName] = useState(
         open === true ? "buyBox_main" : "buyBox_main closed"
     );
+
+
+    const funds = localStorage.getItem("funds");
+
     useEffect(() => {
-        setNetCost(price*quantity);
-    },[quantity]);
+        setNetCost((stockPrice)*(quantity));
+        // console.log(quantity, " ",stockPrice.replace(",",""));
+    },[quantity,stockPrice]);
 
     useEffect(() => {
         setClassName(open === true ? "buyBox_main" : "buyBox_main closed");
@@ -22,7 +31,53 @@ function SellBox({symbl,open, price, closeFun}) {
         setClassName("buyBox_main closed");
         closeFun(false);
     }
-    
+    useEffect(()=>{
+        sellLimit(symbl).then((data) => {
+            setSellLim(data)
+
+            console.log("itna bechna hain")
+        }).catch((error) => {
+            setSellLim(0);
+        })
+    },[symbl,open]);
+
+
+    useEffect(()=>{
+        if(symbl !== "ABC")
+        getFundamentals(symbl).then((data) => {
+            setStockPrice(parseFloat(data.lastPrice.replace(",","")));
+        });
+    },[symbl]);
+
+    useEffect(()=> {
+        console.log("sell limit : ",sellLim);
+
+    },[sellLim]);
+
+    const changeQuantity = (e) => {
+        if(e.target.value <= sellLim) {
+
+            setQuantity(e.target.value);
+            setNetCost((e.target.value*stockPrice).toFixed(2))
+            // setQuantity(e.target.value);
+            // console.log(quantity, " ",parseFloat(stockPrice.replace(",","")));
+            // setNetCost(parseFloat(stockPrice.replace(",",""))* (quantity));
+            // console.log(netCost);
+
+        } else {
+            setQuantity(sellLim);
+            setNetCost(stockPrice*sellLim);
+        }
+    }
+
+    const sellStocks = () => {
+        if(quantity > 0) {
+
+            sell(symbl, quantity, stockPrice).then(data => {
+                closeFun(false);
+            })
+        }
+    }
     return (
         <div className={className}>
             <div className="sellBox_head">
@@ -39,7 +94,7 @@ function SellBox({symbl,open, price, closeFun}) {
                         InputLabelProps={{
                         shrink: true,
                         }}
-                        onChange={(e) => setQuantity(e.target.value)}
+                        onChange={changeQuantity}
                         variant="outlined"
                         className="textField_floor1"
                     />
@@ -56,18 +111,18 @@ function SellBox({symbl,open, price, closeFun}) {
                 </div>
                 </div>
                 <div className="sellBox_body_bottom">
-                <div className="textField_floor2">
-                    <TextField
-                        disabled
-                        id="outlined-disabled"
-                        label="Net Cost"
-                        value={netCost}
-                        variant="outlined"
-                    />
-                </div>
+                    <div className="textField_floor2">
+                        <TextField
+                            disabled
+                            id="outlined-disabled"
+                            label="Net Cost"
+                            value={netCost}
+                            variant="outlined"
+                        />
+                    </div>
                 </div>
                 <div className="sellBox_buttons">
-                    <button className="sellBox_Sell">
+                    <button className="sellBox_Sell" onClick={sellStocks} type="button">
                         Sell
                     </button>
                     <button className="sellBox_Cancel" onClick={close}>

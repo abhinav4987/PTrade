@@ -1,5 +1,8 @@
 .portfolioDetailWindow_main {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .felx-fill {
@@ -20,4 +23,12 @@
 .portfolio-funds {
     font-size: 1.3rem;
     font-weight: 100;
+}
+
+.midData {
+    flex-grow: 1;
+}
+
+.dummy_element {
+    color: transparent;
 }

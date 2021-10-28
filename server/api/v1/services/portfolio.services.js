@@ -1,6 +1,9 @@
 const PortFolio = require("../models/portfolio.model");
+const User = require("../models/user.model")
 const verifyRefreshToken2 = require('../utils/verifyRefreshToken2');
 const getFund = require("../utils/getFunds");
+const updatePortFolio = require("../utils/updatePortfolio");
+const updatePortfolio = require("../utils/updatePortfolio");
 const getFunds = (request, response) => {
 
     const decoded = verifyRefreshToken2(request.body.token);
@@ -20,17 +23,26 @@ const getPortFolio = (request, response) => {
 
 
     if(decoded.hasOwnProperty('email')) {
-        PortFolio.find({ownedBy: user._id},(err, doc) => {
-            if(doc.length === 0 ) {
-                return response.status(400).json({
-                    message: "Logout",
+        User.find({email: decoded.email}, (err, doc) => {
+            if(doc.length > 0) {
+                PortFolio.find({ownedBy: doc[0]._id},(err, docs) => {
+                    if(docs.length === 0 ) {
+                        return response.status(400).json({
+                            message: "Logout",
+                        })
+                    } else {
+                        return response.status(200).json({
+                            result: docs[0],
+                        })
+                    }   
                 })
             } else {
-                return response.status(200).json({
-                    result: doc[0],
+                return response.status(400).json({
+                    message: "Logout"
                 })
-            }   
-        })
+            }
+        });
+        
     } else {
         return response.status(400).json({
             message: "Logout"
@@ -39,42 +51,29 @@ const getPortFolio = (request, response) => {
     
 }
 
-const updatePortfolio = (request, response) => {
+
+
+const update = (request, response) => {
 
     const decoded = verifyRefreshToken2(request.body.token);
-
-
     if(decoded.hasOwnProperty('email')) {
-        PortFolio.find({ownedBy: user._id},(err, doc) => {
-            if(doc.length === 0 ) {
-                return response.status(400).json({
-                    message: "Logout",
-                })
-            } else {
-
-                doc[0].networth = request.body.networth;
-                doc[0].unrealisedProfit = request.body.unrealisedProfit;
-                doc[0].equityInvestment = request.body.equityInvestment;
-                doc[0].funds = request.body.funds;
-                doc[0].save().then((saved) => {
-                    return response.status(200).json({
-                        result: doc[0],
-                    })
-                });
-                
-            }   
-        })
+        
+        updatePortfolio(response, decoded.email);
+        return response.status(200).json({
+            message: "success"
+        });
     } else {
-        return response.status(400).json({
-            message: "Logout"
-        })
+        return response.status(400);
     }
 }
+
+
+
 
 
 module.exports = {
     getFunds,
     getPortFolio,
-    updatePortfolio
+    update,
 }
 

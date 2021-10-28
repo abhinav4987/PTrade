@@ -23,6 +23,7 @@ function BottomSelect({changeIndex}) {
         index5_className = value === 5 ? "indexOption selectedOption" : "indexOption";
     }   
 
+    
 
     // useEffect(() => {
         

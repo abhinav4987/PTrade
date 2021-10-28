@@ -30,6 +30,7 @@
 .watchList_chart {
     margin-bottom: 2px;
     background-color:white;
+    /* border-radius:1rem; */
 }
 
 .watchList_stockInfoHead {
@@ -45,13 +46,40 @@
 .watchList_fill{
     color: white;
     background-color: white;
-    flex-grow: 1;
+    flex-grow: 1; 
+}
+
+.MobileStockInfo_main {
+    position: fixed;
+    background-color: rgb(243, 239, 239);
+    top : 20%;
+    left: 10%;
+    width: 80%;
+    /* transform: translate(-50%, 0); */
+    z-index: 200;
+    border-radius: 5px;
+}
+.mobile-chart {
+    border-radius: 5px;
+}
+.mobile-head {
+    border-radius: 5px;
 }
 
 
 @media only screen and (max-width: 920px) {
 
+    
     .watchList_selectedStock {
         display: none;
     }
 }
+
+
+@media only screen and (min-width: 920px) {
+
+    .MobileStockInfo_main {
+        display: none;
+    }
+}
+

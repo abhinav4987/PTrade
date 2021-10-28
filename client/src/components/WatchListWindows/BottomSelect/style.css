@@ -46,7 +46,7 @@
 
 /* http://localhost:3000/?action=login&type=login&status=success&request_token=fI8yzDB3FlufNPeP07vtoiU70RakLpBo */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 920px) {
     
     .watchList_bottomSelect {
         position: fixed;

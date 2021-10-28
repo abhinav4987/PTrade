@@ -3,6 +3,8 @@ var Schema   = mongoose.Schema;
 
 
 
+
+
 var portfolioSchema = new Schema({
     ownedBy : {
         type: String,
@@ -20,6 +22,8 @@ var portfolioSchema = new Schema({
         type: Number
     }
 },{timestamps: true});
+
+
 
 
 module.exports = mongoose.model('PortFolio', portfolioSchema);

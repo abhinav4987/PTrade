@@ -1,12 +1,44 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import {getFundamentals} from '../../../routes/yFinance.routes'
 import './style.css'
 
 
 
-function StockDetailInfo() {
+function StockDetailInfo({symbl, data}) {
+
+    const [display, setDisplay] = useState({
+        quantity: 0,
+        totalInvestment: 0,
+    });
+    const [value, setValue] = useState(0);
+    const [currentPrice, setCurrentPrice] = useState(0);
+
+    useEffect(() => {
+        console.log("symbol changed to ", symbl);
+        if(symbl !== "ABC")
+        getFundamentals(symbl).then((dataa) => {
+            console.log("I recieved this data : ", dataa)
+            if(symbl !== "ABC") {
+                for(let i =0;i< data.length;i++) {
+                    if(data[i].symbl === symbl) {
+                        console.log("inserting data : ", data[i]);
+                        setDisplay(data[i]);
+                    }
+                }
+            }
+            setCurrentPrice(parseFloat(dataa.lastPrice.replace(",","")))
+        });
+    }, [symbl]);
+
+    useEffect(() => {
+        if(symbl !== "ABC" && currentPrice !== 0) {
+            setValue(currentPrice*display.quantity);
+        }
+    },[ currentPrice])
+
     return (
         <div className="StockDetailInfo">
-            <div className="stockSymbol">UVEW</div>
+            <div className="stockSymbol">{symbl}</div>
             <div className="stcokDetail">
                 <div className="detailRow">
                     <div className="detailBox">
@@ -15,7 +47,7 @@ function StockDetailInfo() {
                             <span className="detailBoxInfo">
                             Number or volume of shares being transacted
                             </span>
-                            <span className="detailValue">98K</span>
+                            <span className="detailValue">{display.quantity.toFixed(2)}</span>
                         </div>
                     </div>
                     <div className="detailBox">
@@ -24,7 +56,7 @@ function StockDetailInfo() {
                             <span className="detailBoxInfo">
                                 Net value of the stocks owned.
                             </span>
-                            <span className="detailValue">6.M</span>
+                            <span className="detailValue">{value.toFixed(2)}</span>
                         </div>
                     </div>
                 </div>
@@ -35,7 +67,7 @@ function StockDetailInfo() {
                         <span className="detailBoxInfo">
                             Cost of a single stock owned by you.
                         </span>
-                        <span className="detailValue">657.3K</span>
+                        <span className="detailValue">{(display.totalInvestment/display.quantity).toFixed(2)}</span>
                     </div>
                 </div>
                 <div className="detailBox">
@@ -44,7 +76,7 @@ function StockDetailInfo() {
                         <span className="detailBoxInfo">
                             Market price of the stock.
                         </span>
-                        <span className="detailValue">563.3K</span>
+                        <span className="detailValue">{currentPrice}</span>
                     </div>
                 </div>
                 </div>
@@ -55,7 +87,7 @@ function StockDetailInfo() {
                             <span className="detailBoxInfo">
                                 Profit gained from your transactions.
                             </span>
-                            <span className="detailValue">38.12K</span>
+                            <span className="detailValue">{(value - display.totalInvestment).toFixed(2)}</span>
                         </div>
                     </div>
                     <div className="controls">

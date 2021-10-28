@@ -1,0 +1,16 @@
+.backdrop_main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    color: transparent;
+    background-color: rgba(0, 0, 0, 0.288);
+    z-index: 150;
+    transition:  all 1s ease-in;
+}
+
+.closed {
+    display:none;
+    top:-100%
+}

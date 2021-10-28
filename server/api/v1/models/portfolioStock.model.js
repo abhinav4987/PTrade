@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 var Schema   = mongoose.Schema;
 
 var portfolioStockSchema = new Schema({
+    
     ownedBy : {
         type: String,
     },

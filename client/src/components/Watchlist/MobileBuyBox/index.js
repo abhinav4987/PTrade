@@ -1,42 +1,17 @@
 import React,{useState, useEffect} from 'react'
 import TextField from '@material-ui/core/TextField';
-import {getFundamentals} from '../../../routes/yFinance.routes'
-import {buy} from '../../../routes/portfolioStocks.routes'
-import {updatePortfolio} from '../../../routes/portfolio.routes'
 import './style.css';
-
-
-function BuyBox({symbl,open, price, closeFun}) {
+function MobileBuyBox({symbl,open, price, closeFun}) {
     
-    console.log("Buying : ", symbl);
-
     const [quantity, setQuantity] = useState(1);
     const [netCost, setNetCost] = useState(price*quantity);
     const [stockPrice, setStockPrice] = useState(price);
     const [className, setClassName] = useState(
         open === true ? "buyBox_main" : "buyBox_main closed"
     );
-    const funds = localStorage.getItem("funds");
-    useEffect(()=> {
-        console.log("new price : ", stockPrice);
-        setStockPrice(price);
-    },[price]);
-
-
     useEffect(() => {
-        setNetCost(stockPrice*quantity);
-    },[quantity,stockPrice]);
-
-    const changeQuantity = (e) => {
-        if(stockPrice*e.target.value <= funds) {
-            setQuantity(e.target.value);
-            setNetCost(stockPrice*quantity);
-        } else {
-            setQuantity(funds / stockPrice);
-            setNetCost((stockPrice*(funds / stockPrice)).toFixed(2));
-        }
-    };
-
+        setNetCost(price*quantity);
+    },[quantity]);
 
     useEffect(() => {
         setClassName(open === true ? "buyBox_main" : "buyBox_main closed");
@@ -46,19 +21,10 @@ function BuyBox({symbl,open, price, closeFun}) {
         closeFun(false);
     }
     
-    const buyStock = async (e) => {
-        buy(symbl, quantity, stockPrice).then(data => {
-            closeFun(false);
-        });
-    };
-    useEffect(()=>{
-        if(symbl!=="ABC")
-        getFundamentals(symbl).then((data) => {
-            setStockPrice(parseFloat(data.lastPrice.replace(",","")));
-        });
-    },[symbl]);
+    
     return (
-        <div className={className}>
+        <div className="buyBox_mobile_main">
+            <div className={className}>
             <div className="buyBox_head">
                 BUY<span className="HEAD_SYMBOL">{symbl}</span> <span className="exchangeName">NSE</span>x {quantity} Qty
             </div>
@@ -73,7 +39,7 @@ function BuyBox({symbl,open, price, closeFun}) {
                         InputLabelProps={{
                         shrink: true,
                         }}
-                        onChange={changeQuantity}
+                        onChange={(e) => setQuantity(e.target.value)}
                         variant="outlined"
                         className="textField_floor1"
                     />
@@ -101,7 +67,7 @@ function BuyBox({symbl,open, price, closeFun}) {
                 </div>
                 </div>
                 <div className="buyBox_buttons">
-                    <button className="buyBox_Buy" type="button" onClick={buyStock}>
+                    <button className="buyBox_Buy">
                         Buy
                     </button>
                     <button className="buyBox_Cancel" onClick={close}>
@@ -109,12 +75,9 @@ function BuyBox({symbl,open, price, closeFun}) {
                     </button>
                 </div>
             </div>
+            </div>
         </div>
     )
 }
 
-export default BuyBox
-
-// net quantity
-// price
-// net worth
+export default MobileBuyBox

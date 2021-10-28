@@ -13,9 +13,9 @@ server.use(bodyParser.urlencoded({
     extended: true
 }));
 // server.use(cokieParser());
-server.use(bodyParser.json());
+// server.use(bodyParser.json());
 server.use(express.urlencoded({ extended: true }))
-server.use(express.json({type: 'application/*+json'}))
+server.use(express.json())
 server.use(cors())
 
 // database

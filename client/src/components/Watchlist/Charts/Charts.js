@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+    import React, {useState, useEffect} from 'react';
 import PropTypes from "prop-types";
 import { format } from "d3-format";
 import { timeFormat } from "d3-time-format";
 import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
-import { CandlestickSeries,BarSeries } from "react-stockcharts/lib/series";
+import { CandlestickSeries,BarSeries,LineSeries } from "react-stockcharts/lib/series";
 import { ChartCanvas, Chart, ZoomButtons } from "react-stockcharts";
 import { fitWidth } from "react-stockcharts/lib/helper";
 import {
@@ -47,7 +47,7 @@ const margin = {
 function Charts({data, width, type, ratio, time}) {
     
     console.log("HELLO : ",data);
-    const [timeUnitCandleStick,  setTimeUnitCandleStick] = useState(<CandlestickSeries width={timeIntervalBarWidth(utcMinute)}  {...candlesAppearance}/>);
+    const [timeUnitCandleStick,  setTimeUnitCandleStick] = useState(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcMinute)} stroke="#f08937" />);
     const [timeUnitBar, setTimeUnitBar] = useState(<BarSeries yAccessor={d => d.volume}  fill={(d) => d.close > d.open ? "#6BA583" : "red"} />)
 
     const xAccessor = (d) => {
@@ -58,19 +58,19 @@ function Charts({data, width, type, ratio, time}) {
         
         if(time === "1m") {
             // console.log("here 1");
-            setTimeUnitCandleStick(<CandlestickSeries width={timeIntervalBarWidth(utcMinute)}  {...candlesAppearance}/>);
+            setTimeUnitCandleStick(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcMinute)} stroke="#f08937"  />);
         } else if(time === "1hr") {
             // console.log("here 2");
-            setTimeUnitCandleStick(<CandlestickSeries width={timeIntervalBarWidth(utcHour)}  {...candlesAppearance}/>);
+            setTimeUnitCandleStick(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcHour)} stroke="#f08937" />);
         } else if(time === "1d") {
             // console.log("here 3");
-            setTimeUnitCandleStick(<CandlestickSeries width={timeIntervalBarWidth(utcDay)}  {...candlesAppearance}/>);
+            setTimeUnitCandleStick(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcDay)} stroke="#f08937" />);
         } else if (time === "1wk") {
             // console.log("here 4");
-            setTimeUnitCandleStick(<CandlestickSeries width={timeIntervalBarWidth(utcWeek)}  {...candlesAppearance}/>);
+            setTimeUnitCandleStick(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcWeek)} stroke="#f08937" />);
         } else if(time === "1mo") {
             // console.log("here 5");
-            setTimeUnitCandleStick(<CandlestickSeries width={timeIntervalBarWidth(utcMonth)}  {...candlesAppearance}/>);
+            setTimeUnitCandleStick(<LineSeries yAccessor={d => d.close} width={timeIntervalBarWidth(utcMonth)} stroke="#f08937" />);
         }
     },[time]);
 

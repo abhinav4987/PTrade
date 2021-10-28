@@ -13,25 +13,34 @@ const removeSymbolFromWatchlist = require('../utils/removeSymbolFromWatchList');
 const getAllWatchList = (request, response) => {
 
     const token = request.body.token;
-    // console.log(request.body);
-    const decoded = verifyRefreshToken2(token);
-    // console.log("hello watchList");
-    // console.log(decoded);
-    if(decoded.hasOwnProperty("email")) {
-        // console.log("fetchhh : ",decoded.email);
-        User.findOne({email : decoded.email},(err,doc) => {
-            if(!err) {
-                fetchAllWatchList(doc,response);
-            } else {
-                console.log("failed");
-                return response.status(400);
-            }
-        })
-
-            
-    }else {
-        return response.status(400);
+    console.log(request.body);
+    
+    try {
+        const decoded = verifyRefreshToken2(token);
+        console.log("hello watchList");
+        console.log(decoded);
+        if(decoded.hasOwnProperty("email")) {
+            console.log("fetchhh : ",decoded.email);
+            User.findOne({email : decoded.email},(err,doc) => {
+                if(!err) {
+                    fetchAllWatchList(doc,response);
+                } else {
+                    console.log("failed");
+                    return response.status(400);
+                }
+            })
+    
+                
+        }else {
+            console.log("returning failed response");
+            return response.status(400).json({
+                error: "relogin"
+            });
+        }
+    } catch (error) {
+        response.status(400).json({error: error});
     }
+    
     
 }
 

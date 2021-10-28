@@ -1,4 +1,5 @@
 .portfolio_main {
+    /* position: relative; */
     padding-top: 4rem;
     background-color: rgb(238, 238, 238);
 
@@ -6,12 +7,32 @@
     
     /* height: 100vh; */
 }
-
+.selected_portfolio {
+    flex-grow: 1;
+    display: flex;
+    position: absolute;
+    
+    flex-direction: column;
+    margin-left: 402px;
+    margin-bottom: 3px;
+    height: 100vh;
+    width: calc(100% - 402px);
+    background-color: rgb(243, 239, 239);
+}
 .desktop-portfolio {
     display: flex;
     width: 100%;
+    position: relative;
+    /* z-index: -1; */
 }
 
+.portfolioboxset {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    left : 400px;
+    z-index: 1000;    ;
+}
 
 .mobile-portfolio {
     width: 100%;

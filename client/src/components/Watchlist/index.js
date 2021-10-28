@@ -1,9 +1,10 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,Fragment} from 'react'
 import WatchListWindow from '../WatchListWindows'
 import Charts from './Charts'
 import StockInfo from './StockInfo'
 import BuyBox from './BuyBox'
 import SellBox from './SellBox';
+import {getFunds} from '../../routes/portfolio.routes'
 import { getAllWatchList} from '../../routes/watchList.routes'
 import {getFundamentals} from '../../routes/yFinance.routes'
 import './style.css'
@@ -12,7 +13,11 @@ import Sell from '../Buttons/Sell'
 import Remove from '../Buttons/Remove'
 import Add from '../Buttons/Add'
 import {includedSymbol} from '../../utils/includedSymbol';
-import {removeSymbl, addSymbl} from '../../routes/watchList.routes'
+import {removeSymbl, addSymbl} from '../../routes/watchList.routes';
+import MobileSellBox from './MobileSellBox';
+import MobileBuyBox from './MobileBuyBox';
+import MobileStockInfo from './MobileStockInfo'
+import BackDrop from './BackDrop';
 let DataArray = [
     [
         
@@ -141,9 +146,17 @@ function WatchList() {
     const [buyBoxOpen, setBuyBoxOpen] = useState(false);
     const [sellBoxOpen, setSellBoxOpen] = useState(false);
     const [symbl,setSymbl] = useState("HDFCBANK");
+    const [currPrice, setCurrentPrice] = useState(0);
+    const [backDropOpen, setBackDrop] = useState(false);
+    const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
+    const [buybox, setBox] = useState(
+            <BuyBox open={buyBoxOpen} closeFun={setBuyBoxOpen} price={currPrice} symbl={symbl} />
+        
+    )
     useEffect(() => {
         getAllWatchList().then((data) => {
             console.log("yaha bhai yaha ", data);
+            if(data !== null)
             setWatchListData(data);
             // setWatchListArray(watchListData)
             // console.log("pehle", data[0][0])
@@ -153,20 +166,40 @@ function WatchList() {
 
     useEffect(() => {
         getFundamentals(symbl).then((data) => {
-            
+            console.log("mycomputer size :: " , data)
             setStockInfo(data);
         })
+
+        getFunds();
     },[]);
+
     useEffect(() => {
+        if(backDropOpen === false) {
+            setBuyBoxOpen(false);
+            setSellBoxOpen(false);
+            setMobileInfoOpen(false);
+            getFunds();
+        }
+    },[backDropOpen])
+    useEffect(() => {
+
         if(buyBoxOpen === true){
             setSellBoxOpen(false);
+            setBackDrop(true);
+        } else {
+            setBackDrop(false);
         }
+        getFunds();
     },[buyBoxOpen]);
 
     useEffect(() => {
         if(sellBoxOpen === true) {
             setBuyBoxOpen(false);
+            setBackDrop(true);
+        } else {
+            setBackDrop(false);
         }
+        getFunds();
     },[sellBoxOpen]);
     useEffect(() => {
         // console.log(symbl)
@@ -176,10 +209,20 @@ function WatchList() {
             console.log("included ",includedSymbol(watchListData,symbl));
             setIncluded(includedSymbol(watchListData,symbl));
         })
+        // setBackDrop(true);
+        setMobileInfoOpen(true);
     },[symbl]);
+
+    useState(() => {
+        if(stockInfo)
+        setCurrentPrice(stockInfo.lastPrice);
+    }, [stockInfo]);
+    
     
     useEffect(() => {
         setWatchListArray(watchListData[index]);
+        if(watchListData[index][0] !== "ABC")
+            setSymbl(watchListData[index][0]);
     },[index,watchListData]);
 
     const changeIndex = (value) => {
@@ -209,9 +252,24 @@ function WatchList() {
         addSymbl(symbl,index);
         refetchWatchList();
     }
+
+    useEffect(()=>{
+        console.log("aajka price : ", currPrice);
+        
+    },[currPrice]);
     console.log("hello 2");
     return (
         <div className="watchList_main">
+        <BackDrop open={backDropOpen} closeFunc={setBackDrop} />
+            {
+                window.innerWidth < 920 ? (
+                    <Fragment>
+                        <MobileBuyBox open={buyBoxOpen} closeFun={setBuyBoxOpen} />
+                        <MobileSellBox  open={sellBoxOpen} closeFun={setSellBoxOpen}/>
+                    </Fragment>
+                ) : null
+            }
+
             <WatchListWindow 
                 data={watchListArray} 
                 changeIndex={changeIndex}  
@@ -221,30 +279,63 @@ function WatchList() {
                 refetchWatchList={refetchWatchList}
                 buyOpen={setBuyBoxOpen}
                 sellOpen={setSellBoxOpen}
-        />
-            <div className="watchList_selectedStock">
-                <SellBox open={sellBoxOpen} closeFun={setSellBoxOpen} price={234} symbl={symbl} />
-                <BuyBox open={buyBoxOpen} closeFun={setBuyBoxOpen} price={1000} symbl={symbl}/>
-                <div className="watchList_chart">
-                    <Charts symbl={symbl} />
-                </div>
-                <div className="watchList_stockInfoHead">
-                    {symbl}
-                    <div className="watchList_stockInfoHead_button"> 
-                        <Buy illustration="Buy" open={setBuyBoxOpen}  />
-                        <Sell illustration="Sell" open={setSellBoxOpen} />
-                        {
-                            included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
-                        }
+            />
+            
+                    <div className="watchList_selectedStock">
+                        
+                        <SellBox open={sellBoxOpen} closeFun={setSellBoxOpen} price={currPrice} symbl={symbl}  />
+                        <BuyBox open={buyBoxOpen} closeFun={setBuyBoxOpen} price={currPrice} symbl={symbl} />
+                        
+                        
+                        <div className="watchList_chart">
+                            <Charts symbl={symbl} />
+                        </div>
+                        <div className="watchList_stockInfoHead">
+                            {symbl}
+                            <div className="watchList_stockInfoHead_button"> 
+                                <Buy illustration="Buy" open={setBuyBoxOpen}  />
+                                <Sell illustration="Sell" open={setSellBoxOpen} />
+                                {
+                                    included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
+                                }
 
-                    </div>
+                            </div>
+                        </div>
+                        <StockInfo symbl={symbl} data={stockInfo} index={index}/>
+                        <div className="watchList_fill">.fegg</div>
                 </div>
-                <StockInfo symbl={symbl} data={stockInfo} index={index}/>
-                <div className="watchList_fill">.fegg</div>
-            </div>
+                
+                    
+                        {mobileInfoOpen === true ?
+                        (
+                            <div className="MobileStockInfo_main">
+                                <div className="watchList_chart mobile-chart">
+                                    <Charts symbl={symbl} />
+                                </div>
+                                <div className="watchList_stockInfoHead mobile-head">
+                                    {symbl}
+                                    <div className="watchList_stockInfoHead_button"> 
+                                        <Buy illustration="Buy" open={setBuyBoxOpen}  />
+                                        <Sell illustration="Sell" open={setSellBoxOpen} />
+                                        {
+                                            included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        ) : null}
+                    
+                
+            
+            
         </div>
     )
 }
 
 
 export default WatchList
+
+
+
+

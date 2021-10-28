@@ -53,8 +53,18 @@ const getFundamentals = async (request, response) => {
     
 }
 
+const getFundamentalUtil =  async (symbl) => 
+    await NSEAPI.getQuoteInfo(symbl).then((data) => {
+            // console.log("aapne yeh manga tha: ",data.data.data[0]);
+            return data.data.data[0]
+        }) 
+
+    
+
+
 
 module.exports = {
     getHistory,
     getFundamentals,
+    getFundamentalUtil
 };

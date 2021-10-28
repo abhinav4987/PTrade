@@ -46,7 +46,7 @@
     padding: 1rem 0.3rem;
 }
 
-.sellBox_body_bottom {
+.sellBox_body_bottobm {
     margin-bottom: 0.6rem;
 }
 
@@ -83,4 +83,23 @@ button {
 
 .closed {
     display: none;
+}
+
+
+
+@media only screen and (max-width: 920px) {
+    
+    .sellBox_main {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        bottom: 100px;
+        background-color:transparent;
+        z-index: 1000;
+        /* box-shadow: -1px -1px 5px 1px rgba(0,0,0,0.75); */
+        /* width: 400px; */
+    
+    }
+
+    
 }

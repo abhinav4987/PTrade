@@ -1,0 +1,14 @@
+.buyBox_mobile_main {
+    position: fixed;
+    z-index: 1000;
+    top: 20%;
+    left: 20%;
+}
+
+
+@media only screen and (min-width: 920px) {
+    
+    .buyBox_mobile_main {
+        display: none;
+    }
+}
