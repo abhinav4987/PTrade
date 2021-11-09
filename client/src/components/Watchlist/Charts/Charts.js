@@ -6,6 +6,8 @@ import { last, timeIntervalBarWidth } from "react-stockcharts/lib/utils";
 import { CandlestickSeries,BarSeries,LineSeries } from "react-stockcharts/lib/series";
 import { ChartCanvas, Chart, ZoomButtons } from "react-stockcharts";
 import { fitWidth } from "react-stockcharts/lib/helper";
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
+
 import {
 	CrossHairCursor,
 	MouseCoordinateX,
@@ -95,6 +97,11 @@ function Charts({data, width, type, ratio, time}) {
     const xEvents = [new Date(data[0].date), new Date(data[data.length -1].date)];
     return (
         <div className="Charts">
+        <SlideFade
+            direction="top"
+            in={true}
+            transition={{ enter: { duration: 1, delay: 0.2 } }}
+        >
             <ChartCanvas 
                 height={300}
                 ratio={ratio}
@@ -135,6 +142,7 @@ function Charts({data, width, type, ratio, time}) {
                 </Chart>
             
             </ChartCanvas>
+            </SlideFade>
         </div>
     )
 }

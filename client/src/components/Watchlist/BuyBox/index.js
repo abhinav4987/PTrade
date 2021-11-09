@@ -1,8 +1,9 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, Fragment} from 'react'
 import TextField from '@material-ui/core/TextField';
 import {getFundamentals} from '../../../routes/yFinance.routes'
 import {buy} from '../../../routes/portfolioStocks.routes'
 import {updatePortfolio} from '../../../routes/portfolio.routes'
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import './style.css';
 
 
@@ -58,7 +59,9 @@ function BuyBox({symbl,open, price, closeFun}) {
         });
     },[symbl]);
     return (
+        <Fragment >
         <div className={className}>
+            <SlideFade in={open} offsetY="20px">
             <div className="buyBox_head">
                 BUY<span className="HEAD_SYMBOL">{symbl}</span> <span className="exchangeName">NSE</span>x {quantity} Qty
             </div>
@@ -109,7 +112,9 @@ function BuyBox({symbl,open, price, closeFun}) {
                     </button>
                 </div>
             </div>
+            </SlideFade>
         </div>
+        </Fragment>
     )
 }
 

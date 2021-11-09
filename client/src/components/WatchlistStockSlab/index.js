@@ -6,6 +6,7 @@ import Remove from '../Buttons/Remove';
 import { getFundamentals } from '../../routes/yFinance.routes';
 import { removeSymbl } from './../../routes/watchList.routes';
 import './style.css';
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 
 
 
@@ -70,18 +71,36 @@ function StockSlab({data,
     
     return (
         <div className="stockSlab_main" onClick={onClick}>
+        
             <div className="stockSlab_layer1" id="">
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
+                    <span className={stockSymbolClassName}>{data}</span>
+                </SlideFade>
 
-                <span className={stockSymbolClassName}>{data}</span>
                 <div className="fillSpace"></div>
-                <span className="percentage_change">{changePercentage}%</span>
+                <SlideFade
+                direction="top"
+                in={true}
+                transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
+                    <span className="percentage_change">{changePercentage}%</span>
                 {
                     loss ?
                         <BsArrowDownRight className="redStock" /> :
                         <BsArrowUpLeft className="greenStock" />
                 }
-                <span className={currentPriceClassName}>{lastPrice}</span>
-                
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
+                    <span className={currentPriceClassName}>{lastPrice}</span>
+                </SlideFade>    
             </div>
 
             <div className="stockSlab_layer2">
@@ -90,6 +109,7 @@ function StockSlab({data,
                 <Sell illustration="Sell" open={sellOpen}/>
                 <div onClick={remove}><Remove illustration="Remove" remove={remove} /></div>
             </div>
+        
         </div>
     )
 }

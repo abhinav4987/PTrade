@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import {getFundamentals} from '../../../routes/yFinance.routes'
 import {sellLimit, sell} from '../../../routes/portfolioStocks.routes'
 import './style.css';
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import { updatePortfolio } from '../../../routes/portfolio.routes';
 
 function SellBox({symbl,open, price, closeFun}) {
@@ -80,6 +81,11 @@ function SellBox({symbl,open, price, closeFun}) {
     }
     return (
         <div className={className}>
+            <SlideFade 
+                direction="top"
+                in={open}
+                transition={{ enter: { duration: 0.4, delay: 0.5 } }}
+            >
             <div className="sellBox_head">
                 SELL<span className="HEAD_SYMBOL">{symbl}</span> <span className="exchangeName">NSE</span>x {quantity} Qty
             </div>
@@ -130,6 +136,7 @@ function SellBox({symbl,open, price, closeFun}) {
                     </button>
                 </div>
             </div>
+            </SlideFade>
         </div>
     )
 }

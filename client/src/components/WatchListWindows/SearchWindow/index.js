@@ -32,6 +32,7 @@ function SearchWindow({changeSymbl}) {
                     iconColor: "black",
                     lineColor: "rgb(232, 234, 237)"
                 }}
+                placeholder="Search some stocks.."
                 showClear={true}
                 resultStringKeyName="SYMBL"
                 maxResults={10}

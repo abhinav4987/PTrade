@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import './style.css'
 
 
@@ -15,6 +16,12 @@ function StockInfo({data,index}) {
     
     return (
         <div className="watchListStockInfo">
+
+            <SlideFade
+            direction="top"
+            in={true}
+            transition={{ enter: { duration: 0.4, delay: 0.7 } }}
+            >
             <div className="info_Attribute">
                     <span className="attribute_block bottomBorder">
                         Volume
@@ -33,6 +40,12 @@ function StockInfo({data,index}) {
                     </span>
                     
             </div>
+            </SlideFade>
+            <SlideFade
+            direction="top"
+            in={true}
+            transition={{ enter: { duration: 0.4, delay: 0.7 } }}
+            >
             <div className="info_value">
                     <span className="value_block bottomBorder">
                         {data ? data.totalTradedVolume : dummyData.totalTradedVolume}
@@ -51,7 +64,7 @@ function StockInfo({data,index}) {
                     </span>
                     
             </div>
-
+            </SlideFade>
         </div>
     )
 }

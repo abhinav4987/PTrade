@@ -1,0 +1,45 @@
+.rangeDisplay {
+    display: flex;
+    flex-direction: column;
+}
+
+.rangeDisplay > div:nth-child(1) {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.rangeDisplay > div:nth-child(1) > span {
+    font-size: 1rem;
+    font-weight: 500;
+
+} 
+
+.rangeDisplay > div:nth-child(2) {
+    position: relative;
+    height: 8px;
+    width: 220px;
+    background-color:rgba(218, 216, 216, 0.863);
+    /* border: 1px solid rgb(0, 254, 220); */
+    border-radius: 10px;
+}
+.rangeDisplay > div:nth-child(3) {
+    display: flex;
+    justify-content: space-between;
+}
+.rangeDisplay > div:nth-child(3) > span {
+    font-size: 0.8rem;
+    font-weight: 500;
+
+} 
+
+.pointer {
+    position: absolute;
+    width: 0; 
+    height: 0; 
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    
+    border-top: 8px solid rgb(0, 162, 255);
+    /* left: 10%; */
+}

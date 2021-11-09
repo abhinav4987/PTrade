@@ -9,6 +9,7 @@ import {getFunds} from '../../routes/portfolio.routes'
 import {getFundamentals} from '../../routes/yFinance.routes';
 import {updatePortfolio} from '../../routes/portfolio.routes'
 import BackDrop from './BackDrop';
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import './style.css';
 
 

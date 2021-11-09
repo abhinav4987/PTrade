@@ -1,28 +1,74 @@
 .charts_sidePannel {
     display: flex;
-    flex-direction: column;
-    margin: 3px 20px;
+    /* flex-direction: column; */
+    margin: 3px 0px;
     text-align: center;
+    width: 100%;
+}
+
+.selected_stock_info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-right: rem;
+    margin-left: 0.2rem;
+}
+
+.stock_statistics {
+    margin-top: 1rem;
+    padding: 1rem;
+}
+.selected_stock_info > span {
+    text-align: left;
+    font-size: 1.5rem;
+    margin: 0.3rem;
+    padding: 0.3rem;
+    border-bottom: 1px solid rgba(63, 62, 62, 0.089);
+}
+
+.range_detail {
+    /* align-items:flex-end;     */
+    margin-top: 0.6rem
+}
+
+.stockdetail_slab {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.103) !important;
+}
+
+.stockdetail_slab > span:nth-child(1) {
+    font-size: 1rem;
+    font-weight: 500;
+}
+.stockdetail_slab > span:nth-child(2) {
+    font-weight: 300;
 }
 
 .sidePanel_gainerLooser {
     display: flex;
-    
+    flex-direction: column;
 }
 
 .sidePannel_topGainer {
     /* min-width: 340px; */
-    margin: 0 5px;
+    margin: 0 0px;
     padding: 0 5px;
     background-color: white;
+    border-radius: 4px;
 }
 
 .sidePannel_topLooser {
     /* min-width: 340px; */
-    margin: 0 5px;
+    margin: 0 0px;
     padding: 0 5px;
     background-color: white;
-    border-radius: 2px;
+    margin-top: 5px;
+    border-radius: 4px;
 }
 
 .panel_colHead {
@@ -34,6 +80,20 @@
 }
 
 .sidePannel_searchBox {
-    flex-grow: 1;
+    /* flex-grow: 1; */
+    width: 100%;
     margin-bottom: 3px;
+    display: flex;
+}
+.sidePannel_searchBox > div {
+    width: 100%;
+    flex-grow: 1;
+}
+
+
+.sidepanel_genral_data {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 0 5px;
 }

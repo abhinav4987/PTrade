@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react'
 import { getHistory } from '../../../routes/yFinance.routes';
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import './style.css';
 import Charts from './Charts'
 import MadeData from './Data';
@@ -117,12 +118,48 @@ function Chart({symbl}) {
         <div className="Charts_watchlist">
             {chartsToDisplay === null ? <Charts data={chartData} time={interval.value}/> : chartsToDisplay}
             <div className="SelectTime">
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("1d")}>1D</button>
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("1mo")}>1MO</button>
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("6mo")}>6MO</button>
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("1y")}>1YR</button>
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("5y")}>5YR</button>
+                </SlideFade>
+                <SlideFade
+                    direction="top"
+                    in={true}
+                    transition={{ enter: { duration: 1, delay: 0.2 } }}
+                >
                 <button className="selectTime-button" type="button" onClick={() => setPeriod("10y")}>10YR</button>
+                </SlideFade>
             </div>
         </div>
     )

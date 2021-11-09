@@ -41,7 +41,7 @@
     margin-bottom: 5px;
     /* background-color: black; */
     /* color: white; */
-    /* color: rgba(71, 71, 71, 0.712); */
+    color: rgba(0, 0, 0, 0.582);
     padding: 7px;
     border-left: 1px solid rgb(230, 228, 228);
 }
@@ -53,7 +53,7 @@
     justify-content: space-between;
     height: auto;
     background-color: white;
-    font-size: 0.77rem;
+    font-size: 1rem;
     padding: 5px;
     font-weight: 100;
 }

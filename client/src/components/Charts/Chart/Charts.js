@@ -38,11 +38,11 @@ const bbFill = "#4682B4";
 
 
 const candlesAppearance = {
-    wickStroke: "#000000",
+    wickStroke: "rgba(0,0,0,0.4)",
     fill: function fill(d) {
-        return d.close > d.open ? "rgb(255, 0, 0)" : "rgb(0, 197, 0)";
+        return d.close > d.open ? "rgb(255, 0, 0)" : "rgb(49, 146, 8)";
     },
-    stroke: "#000000",
+    stroke: "rgba(0,0,0,0.4)",
     candleStrokeWidth: 1,
     widthRatio: 0.8,
     opacity: 1,

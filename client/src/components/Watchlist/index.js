@@ -18,6 +18,7 @@ import MobileSellBox from './MobileSellBox';
 import MobileBuyBox from './MobileBuyBox';
 import MobileStockInfo from './MobileStockInfo'
 import BackDrop from './BackDrop';
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 let DataArray = [
     [
         
@@ -221,8 +222,11 @@ function WatchList() {
     
     useEffect(() => {
         setWatchListArray(watchListData[index]);
-        if(watchListData[index][0] !== "ABC")
+        if( watchListData[index].length > 0 && watchListData[index][0] !== "ABC")
             setSymbl(watchListData[index][0]);
+        else {
+            setSymbl("ABC");
+        }
     },[index,watchListData]);
 
     const changeIndex = (value) => {
@@ -290,17 +294,30 @@ function WatchList() {
                         <div className="watchList_chart">
                             <Charts symbl={symbl} />
                         </div>
+                        
                         <div className="watchList_stockInfoHead">
+                            <SlideFade
+                                direction="top"
+                                in={true}
+                                transition={{ enter: { duration: 1, delay: 0.2 } }}
+                            >
                             {symbl}
+                            </SlideFade>
+                            <SlideFade
+                                direction="top"
+                                in={true}
+                                transition={{ enter: { duration: 1, delay: 0.2 } }}
+                            >
                             <div className="watchList_stockInfoHead_button"> 
                                 <Buy illustration="Buy" open={setBuyBoxOpen}  />
                                 <Sell illustration="Sell" open={setSellBoxOpen} />
                                 {
                                     included ?<div ><Remove illustration="Remove" remove={remove}/></div> : <div onClick={add}><Add illustration="Add" add={add}/></div>
                                 }
-
                             </div>
+                            </SlideFade>
                         </div>
+                        
                         <StockInfo symbl={symbl} data={stockInfo} index={index}/>
                         <div className="watchList_fill">.fegg</div>
                 </div>

@@ -163,7 +163,7 @@ function Chart() {
             </div>
 
             
-            <SidePannel  showToken={showToken}/>
+            <SidePannel  showToken={setSymbl}/>
 
         </div>
     )

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import NetWorth from './NetWorth'
 import UnrealisedProfit from './UnRealisedProfit'
 import EquityInvestment from './EquityInvestment'
+import { Fade, ScaleFade, Slide, SlideFade } from "@chakra-ui/react"
 import './style.css'
 
 
